@@ -19,7 +19,6 @@ const articleSchema = new mongoose.Schema({
   date: {
     type: Date,
     required: true,
-    default: Date.now,
   },
   source: {
     type: String,
@@ -37,6 +36,10 @@ const articleSchema = new mongoose.Schema({
     type: ObjectId,
     ref: 'user',
     required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
   },
 });
 

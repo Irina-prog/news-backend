@@ -1,7 +1,7 @@
 const Article = require('../models/article');
 
 async function listArticles(req, res) {
-  const cards = await Article.find({ owner: req.user._id }).sort({ date: -1 });
+  const cards = await Article.find({ owner: req.user._id }).sort({ createdAt: -1 });
   res.send(cards);
 }
 

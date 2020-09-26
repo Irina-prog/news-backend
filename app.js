@@ -15,7 +15,6 @@ const {
 } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const urlValidator = require('./lib/url-validator');
 const { errorHandler, notFoundHandler } = require('./lib/error-handler');
 
 const { PORT = 3000, DATABASE_URL = 'mongodb://localhost/news' } = process.env;
@@ -37,9 +36,7 @@ app
   .post('/signup', celebrate({
     body: Joi.object().keys({
       name: Joi.string().required().min(2).max(30),
-      about: Joi.string().min(2).max(30).required(),
-      password: Joi.string().required(),
-      avatar: Joi.string().custom(urlValidator).required(),
+      password: Joi.string().required().min(Number(process.env.MIN_PASSWORD_LENGTH || 6)),
       email: Joi.string().email().required(),
     }),
   }),
