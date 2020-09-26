@@ -70,11 +70,8 @@ pm2 save
 
 Вы можете потестировать приложение на `my-dream-news.students.nomoreparties.co` (ip 178.154.226.53)
 
-Доступ к API возможен по путям:
-
-1. `http://178.154.226.53:3000`
-1. `http://my-dream-news.students.nomoreparties.co:3000`
-1. `https://my-dream-news.students.nomoreparties.co`
+Доступ к API возможен по пути: `https://my-dream-news.students.nomoreparties.co/api`
+Т.е. если необходимо протестировать `POST` `/signup`, то необходимо обращаться к `https://my-dream-news.students.nomoreparties.co/api/signup`.
 
 Запрос на `http://my-dream-news.students.nomoreparties.co` будет перенаправлен на `https://my-dream-news.students.nomoreparties.co` сервером nginx
 

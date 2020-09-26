@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const asyncHandler = require('express-async-handler');
 const helmet = require('helmet');
 const { celebrate, Joi } = require('celebrate');
+const rateLimit = require('express-rate-limit');
 
 require('dotenv').config();
 
@@ -16,6 +17,7 @@ const {
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { errorHandler, notFoundHandler } = require('./lib/error-handler');
+const rateLimitConfig = require('./rate-limit.js');
 
 const { PORT = 3000, DATABASE_URL = 'mongodb://localhost/news' } = process.env;
 
@@ -26,9 +28,10 @@ mongoose.connect(DATABASE_URL, {
 });
 
 const app = express();
+app.set('trust proxy', 1); // Приложение будет спрятано за NGINX
 app
-  .use(helmet()) // для установки заголовков Content-Security-Policy,
-  // позволяют ограничить источники скриптов и других ресурсов.
+  .use(helmet())
+  .use(rateLimit(rateLimitConfig))
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({ extended: true }))
   .use(cookieParser())
