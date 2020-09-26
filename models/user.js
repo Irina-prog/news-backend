@@ -3,7 +3,7 @@ const { hash, compare } = require('bcryptjs');
 require('mongoose-type-url');
 require('mongoose-type-email');
 
-const { Url, Email } = mongoose.Schema.Types;
+const { Email } = mongoose.Schema.Types;
 
 const userSchema = new mongoose.Schema({
   name: {
