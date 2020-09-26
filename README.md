@@ -68,15 +68,15 @@ pm2 save
 
 ### Для ревьювера
 
-Вы можете потестировать приложение на `news.students.nomoreparties.co` (ip 84.201.133.71)
+Вы можете потестировать приложение на `my-dream-news.students.nomoreparties.co` (ip 178.154.226.53)
 
 Доступ к API возможен по путям:
 
-1. `http://84.201.133.71:3000`
-1. `http://news.students.nomoreparties.co:3000`
-1. `https://news.students.nomoreparties.co`
+1. `http://178.154.226.53:3000`
+1. `http://my-dream-news.students.nomoreparties.co:3000`
+1. `https://my-dream-news.students.nomoreparties.co`
 
-Запрос на `http://news.students.nomoreparties.co` будет перенаправлен на `https://news.students.nomoreparties.co` сервером nginx
+Запрос на `http://my-dream-news.students.nomoreparties.co` будет перенаправлен на `https://my-dream-news.students.nomoreparties.co` сервером nginx
 
 Публикуйте ваши замечания [здесь](https://github.com/Irina-prog/news-backend/issues).
 
