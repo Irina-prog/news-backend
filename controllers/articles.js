@@ -17,7 +17,7 @@ async function createArticle(req, res) {
   const article = await Article.create({
     keyword, title, text, date, source, link, image, owner: req.user._id,
   });
-  res.send(article);
+  res.status(201).send(article);
 }
 
 module.exports = {

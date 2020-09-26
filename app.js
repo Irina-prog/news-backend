@@ -28,7 +28,7 @@ mongoose.connect(DATABASE_URL, {
 const app = express();
 app
   .use(helmet()) // для установки заголовков Content-Security-Policy,
-  // позволяют ограничить источники скрипторв и других ресурсов.
+  // позволяют ограничить источники скриптов и других ресурсов.
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({ extended: true }))
   .use(cookieParser())
