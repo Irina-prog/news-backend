@@ -39,6 +39,11 @@ async function login(req, res) {
   }
 }
 
+async function logout(req, res) {
+  res.cookie('token', '', { maxAge: 0 });
+  res.send({});
+}
+
 module.exports = {
-  getUser, createUser, login,
+  getUser, createUser, login, logout,
 };

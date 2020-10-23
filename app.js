@@ -12,7 +12,7 @@ require('dotenv').config();
 const articles = require('./routes/articles');
 const users = require('./routes/users');
 const {
-  createUser, login,
+  createUser, login, logout,
 } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -50,6 +50,9 @@ app
       email: Joi.string().email().required(),
     }),
   }), asyncHandler(login))
+  .post('/signout', celebrate({
+    body: Joi.any(),
+  }), asyncHandler(logout))
   .use('/', auth, articles, users) // защищаем авторизацией все API-вызовы (кроме /signin и /signup)
   .use(errorLogger)
   .use(errorHandler)
